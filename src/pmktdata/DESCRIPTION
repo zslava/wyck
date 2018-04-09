@@ -1,0 +1,33 @@
+Package: pmktdata
+Type: Package
+Title: Manage market data downloading
+Version: 0.5.0
+Date: 2015-09-08
+Author: zimine sviatoslav
+Maintainer: <zslava@gmail.com>
+Description: provides daily (and/or) intraday market data management for
+    several market data providers
+License: GPL
+Depends:
+    methods,
+    quantmod,
+    RCurl,
+    iqfeed,
+    logging,
+    lubridate
+Collate:
+    'Mldata.R'
+    'rwtblox.R'
+    'rwyahoo.R'
+    'pmktdata-help.R'
+    'Contract.R'
+    'rwdtn.R'
+    'ContractSeq.R'
+    'ContractSeqDTN.R'
+    'MldataTblox.R'
+    'MldataYahoo.R'
+    'ContractSeqList.R'
+    'idatOps.R'
+    'MldataDtn.R'
+    'pdocguide.R'
+RoxygenNote: 6.0.0

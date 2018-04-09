@@ -1,0 +1,58 @@
+Package: mtrlchart
+Type: Package
+Title: Technical analysis drawing on financial charts
+Version: 0.2.3
+Date: 2012-08-05
+Author: zimine sviatoslav
+Maintainer: <zslava@gmail.com>
+Description: Place trends, levels, custom labels on weekly,daily OHLC data.
+    Maintain market observations diary
+License: GPL
+Depends:
+    methods,
+    xts,
+    quantmod,
+    pmktdata,
+    blotter,
+    knitr
+Collate:
+    'Artifact.R'
+    'DonchianNperiods.R'
+    'Levelfact.R'
+    'Zonefact.R'
+    'Nfact.R'
+    'Trendfact.R'
+    'Wdict.R'
+    'Wfact.R'
+    'Wgconf.R'
+    'Wstory.R'
+    'Wstorybook.R'
+    'Order.R'
+    'Trade.R'
+    'Orderbook.R'
+    'Wwatchlist.R'
+    'WwatchlistCharting.R'
+    'WwatchlistUserops.R'
+    'Orderops.R'
+    'OrderCharting.R'
+    'ZigZagLegs.R'
+    'addEp.R'
+    'addLevelfact.R'
+    'addZonefact.R'
+    'addLeveleod.R'
+    'addTrendfact.R'
+    'addVoep.R'
+    'addWfact.R'
+    'addZigZagLegVo.R'
+    'mtrlchart-help.R'
+    'zooompick.R'
+    'Bpfact.R'
+    'Bvfact.R'
+    'Hfact.R'
+    'WatchlistReport.R'
+    'DonchianG.R'
+    'WwatchlistAnaops.R'
+    'addOrderfact.R'
+    'internals.R'
+    'pdocguide.R'
+RoxygenNote: 6.0.0.9000

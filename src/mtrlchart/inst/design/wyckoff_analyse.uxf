@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+// fontsize=14
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Cmd to select multiple elements
+// Use Cmd+mouse to select via lasso
+//
+// Use +/- or Cmd+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Cmd+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+// This text will be stored with each diagram;  use it fo
+title:DTN Contracts update
+
+Start
+
+If
+	[just EOD\old style]
+	cs &lt;- readcs(iname)
+
+	[EOD + Intraday]
+	cs &lt;- nreadcs(iname,freq=60,intrd="now")
+EndIf
+Should new future\contracts be added?
+
+
+r notes.</help_text>
+  <zoom_level>7</zoom_level>
+  <element>
+    <type>com.umlet.element.ActivityDiagramText</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1776</w>
+      <h>1613</h>
+    </coordinates>
+    <panel_attributes>title:Make Wyckoff chart analysis
+
+Start
+[load instruments watchlist]
+wl &lt;-lwl('/Users/zimine/googledrive/cdat/wls/watchlist.rdat')
+[fixate historical or live data mode]
+
+dmode(wl,'historic'|'live', startdate='yyyy-mm-dd', enddate=Sys.time())
+
+[for historic mode only\set current date]
+dcdate(wl,date='yyy-mm-dd'
+If
+	[historic\goto next day]
+	gnd(wl)
+
+	[live\download current mkt data]
+	If
+		[non futures\(yahoo)]
+		gnd(wl)
+		
+		[futures (dtn)\(check cs-download diag)]
+		gndcs(wl,rollon='volume',skipintraday=F,csconf)\or gndfcs(wl,cslist,rolon) #live cslist fetch
+	EndIf
+EndIf
+
+
+
+[set current instrument]
+gif(wl) | gin(wl) | gip(wl) | gis(wl,ticker)
+
+[set current time frame]
+stfd1(wl) | stfw1(wl)
+
+Fork
+	[place levels]
+	Fork
+		[creek, ice,\half, trend]
+		pLvl(wl,anote) |\pIcl(wl,anote) |\pHcl(wl,anote) |\pTrl(wl,anote
+
+		[trend\channel]
+		pChn(o,dtime)
+
+		[place/remove\show right limit for\TRL, LVL, HFL]
+		pLepr(o,putl=T)
+	
+		[update\existing\half level]
+		pHfl(o)
+	Sync
+	
+	[place Wyckoff facts]
+	Fork
+		[Wyckoff]
+		pWfct(wl,slbl,cand=F,\cbt=F,cbb=F)
+
+		[switch wyckof\position from\bar top to bottom]
+		swLbl(wl,slbl,dtime) 
+   
+		[modify wfact]
+		uWfct(o,slblo, slbn,\ dtime,cand=F)
+		[modify\interactively]
+		upWfct(o,slbn ,cand=F)
+	
+		[bar fact]
+		pBfct(wl,content,\cbt=F,cbb=F)
+	Sync
+
+	[place view,hypo facts]
+	Fork
+		[view on bar]
+		pVfct(wl,content,\cbt=F,cbb=F)
+
+		[hypo on bar]
+		pHfct(wl,content,cbt=F,cbb=F)
+
+		[nota bene on bar
+		pNob(wl,content,\cbt=F,cbb=F)
+
+		[append contents\in text fact\types BPR,BVW,HYP]
+		apndFct(wl,acont,\type,dtime)	
+	Sync
+
+	[remove fact]
+	Fork
+		[delete\any fact]
+		rmFact(wl,slbl,dtime,ctf)
+
+		[interactive\delete any anyfact]
+		rmpFact(wl)
+	Sync
+Sync
+
+[Story,charting]
+Fork
+	[print story,data]
+	Fork
+		[print story]
+		ps(wl,tf,lf,n=250) 
+		[print story tech]
+		pst(wl)
+
+		[print ohlc data]
+		pd(wl,tf)
+		[print liquidity info\for futures contracts
+		pliquid(wl,ctime csdattopdir)
+	Sync
+
+	[Charting]
+	Fork
+		[general chart	]
+		cc(l,tf='d1',nof=F,\pl=F,plf=F,vcolf=F,\scf=1,nbp=1,dev=F)
+		[wrappers\daily,weekly]
+		ccd(l),ccw(l)	
+		
+		[chart abnormal volume]
+		ccv(l,ep=T,wf=F)
+		[chart donchian indic]
+		cci(l,n=22)
+
+		[turn Wfacts from \numeric to character\presentation]
+		flipFctlbl(l)
+		[flip background\from dark to white]
+		flipbg(l)
+		[increase,decrease,reset\size of artifacts on charts]
+		pgpar(l) | dngpar(l) | inigpar(l)
+	Sync
+Sync
+
+genReport((wl,rnwfile='simpleReport.rwn',\rnwpath='zimine/R/library/mtrlchart/data',\topdir='zimine/googledrive/chart',\latexcompile='/usr/texbin/pdflatex')
+[generate\instrument report]
+
+End
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

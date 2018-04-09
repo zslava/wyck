@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <type>com.umlet.element.ActivityDiagramText</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1356</w>
+      <h>1882</h>
+    </coordinates>
+    <panel_attributes>title:Trade PNL analysis
+Start
+[load instruments watchlist]
+wl &lt;-lwl('/Users/zimine/googledrive/cdat/wls/watchlist.rdat')
+
+
+[if necessary add the orderbook config to Wwatchlist \ ref ex. ~/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/mk_geaa_tradebook.R \ using  ~/googledrive/cdat/order/geaa_tradebook_cfg.csv]
+source(/Users/Zimine/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/mk_geaa_tradebook.R)
+
+[if necessary to obfuscate dates]
+changeDate(wl,isRand=TRUE,hasIntrd=FALSE)
+
+[portfolio analytics values \ ob@name, ob@iniDate, ob@iniEquity, ob@risktrpct, ob@activeinst, ob@ometadata]
+
+[state of orderbook]
+getOrderbook(wl)
+[blotter of trades: wl@orderbok@tdf \ trades have orders, order blotter @wl@orderbook@odf]
+[check for a trade]
+tdck(wl) #prompts to select from chart price entry, stop, fisrt target, main target \tdck(wl, cbl=T) #use last bar for check for long, cbs=T:check for shor \tdck(wl,pent=x.x, pstop=y.y, ft=z.z, mt=v.v) #specify num values for entry, stop, first target, main target \## this function prints potential trade details with risk/reward ratios for first target and main target
+
+pctr(o) # print temp trade params, from o@orderbook@tmptrade  filled by ck4tr(o) call
+
+[print trades blotter]
+tdp(o,sdate, n=-1, iall=F, otn=F, ct=F, co=F) \n iall:for all trades, otn: only for open trades \ ct cancelled trades, co:cancelled orders 
+prfp(o,sdate, tf="d1") #print portfolio nav
+Fork
+	[trades]
+	tdpl(wl,cmnt="first", qty=xxx,mkto=F,plstop=T)\ #open trade with limit order using params from \ wl@orderbook@tmptrade
+	tdca(o, tid=0) #cancel trade and its order(s). \Works only if a trade has working limit orders\ and no open position
+	tdrm(wl, tid=0) #admin erase trade]
+	
+	[check fill]
+	cfill(wl) #check fills on a current date bar for current instr,\use with gnd(wl)
+	gnf(wl,tf="d1",single=F)#goto next day + check fills on all instr list
+	lpd(o, tf=d1", dtype="nfill", gfirst=F, wt=3.0, mwt=1.0, unix=T) \#loop over data,  dtype="ifill" chk for fills
+	lpm(o, tf=d1", nof=F,dtype="pfill", wt=8, mwt=1.0, unix=T) \#loop over data,  dtype="pfill" chk for fills on multiple instrs
+
+	[orders]
+	tdastop(wl,tid=0) #add stop order to trade_id \ with pars from orderbook@tmptrade
+	tdatarg(o, tid=0, qty=0, pr=0 ) #add target limit order to trade id 
+	odwca(o,oid=0) #cancel limit working order specified by oid 
+	tdalim(o, tid=0, qty=0, pr=0,verbose=T) #add arbitrary limit order to trade tid
+	tdamkt(o, tid=0, qty=0 ,verbose=T) #add arbitrary market order to trade tid
+	odw2m(o, oid=0) # transform working limit order  to market order e.g. to close open position
+	[modify order params]
+	odwmp(o, oid=0, pr=0)  # modify working limit order price, eg stop order price
+	odwmq(o, oid=0, qty=0) #modify working limit order  qty
+	tdeqty(o, tid=0) #adjust qty of working worders to match a trade open position
+	[admin commands]
+	odrm(o, oid=0) #admin erase order
+	odadd(o, tid=0, type="l", qty=0, pr=0, n=0, verbose=T) #administrative add \limit or market order on a bar specified interactively
+Sync
+[chart pnl portf]
+.blotter&lt;-new.env()
+[for 1 ticker]
+ctpnl(o,tkr,tf="d1", sdate, edate))
+[total portfolio perf]
+ctotperf(o,tickers,tf="d1", sdate, edate))
+
+End
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

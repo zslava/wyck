@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+ fontsize=14
+ fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Cmd to select multiple elements
+// Use Cmd+mouse to select via lasso
+//
+// Use +/- or Cmd+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Cmd+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>8</x>
+      <y>256</y>
+      <w>120</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;Artifact&gt;&gt;/
+Package::mtrlchart
+{base class for facts}
+--
+-instr:char
+-typeStr:char
+-slabel:char
+-llabel:char
+-dunit:char
+-dfrequency:int
+--
+
+/+appendStory()/
+/+show()/
+fg=gray
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>504</y>
+      <w>104</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Wfact
+--
+yvalue:int
+label2char:char
+--
+setYval()
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>16</x>
+      <y>392</y>
+      <w>40</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>128</x>
+      <y>512</y>
+      <w>88</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>LevelFact
+--
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>232</x>
+      <y>520</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TrendFact
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>40</x>
+      <y>392</y>
+      <w>144</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;128;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>80</x>
+      <y>392</y>
+      <w>208</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;176;88;200;128</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>16</x>
+      <y>608</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Nfact
+{deprecate}
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>248</x>
+      <y>576</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Bpfact
+{bar property}
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>120</x>
+      <y>640</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Hfact
+{hypo}
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>144</x>
+      <y>568</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Bvfact
+{bar view}
+--
+appendStory()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>16</x>
+      <y>392</y>
+      <w>112</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;96;96;96;200;64;216</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>48</x>
+      <y>392</y>
+      <w>184</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;176;104;176;176</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>24</x>
+      <y>392</y>
+      <w>112</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;96;96;96;248</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>96</x>
+      <y>392</y>
+      <w>256</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;240;88;240;192</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>168</x>
+      <y>248</y>
+      <w>288</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Wstory
+--
+-instr:char
+facts:list
+--
++getSinstrument():char
++getFact(index:int):Artifact
++addFact(fact:Artifact)
++delFact(index:int)
+..
++printStory(timeFrame:char,lflag:bool,ndays:int)
++show()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>168</x>
+      <y>56</y>
+      <w>288</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Wstorybook
+--
+-curwstoryid:int
+wstories:list
+--
++addWstory(story:Wstory)
++rmWstory(instName:char)
++updateWstory(story:Wstory)
++getStory(instName:char):Wstory
++globalreplceWylbl(oldsl:char,newsl:char,newll:char)
+..
++show()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>264</x>
+      <y>200</y>
+      <w>48</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=n
+r1=wstories</panel_attributes>
+    <additional_attributes>40;48;32;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>104</x>
+      <y>304</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=n
+r1=facts</panel_attributes>
+    <additional_attributes>24;24;64;48</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>480</x>
+      <y>32</y>
+      <w>272</w>
+      <h>576</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Wwatchlist&gt;&gt;
+Package::mtrlchart
+{principal operate object}
+--
+-curwstoryid:int
+-curtimeframe:char
+-dsubset:int
+-wsubset:int
+-hsubset:int
+-rdatfile:char
+-wdict:Wdict
+-wstories:list(depr)
+-mdata:Mldata
+-wgconf:Wgconf
+-storybook:Wstorybook
+-orderbook:Orderbook
+--
+--constr
+--
++wwlist(instrvec:vector):Wwatchlist
++wwlistfromdata(mdata:Mldata):Wwatchlist
++lwl(rdatfile:char):Wwatchlist
+--
+--getters setters
+--
++getCurinstrument(l:Wwatchlist)
++getCurstory(l:Wwatchlist)
++{get/set}Curtimeframe(l:Wwatchlist)
++{get/set}Subset(l:Wwatchlist,tframe:char)
++{get/set}Wdict(l:Wwatchist):Wdict
++get/set}Graphconf(l:Wwatchist)Wgconf
++{get/set}Storybook(l:Wwatchist):Wstorybook
++{get/set}Orderbook(l:Wwatchist):Orderbook
++{get/set}Marketdata(l:Wwatchist):Mldata
++{get/set}Rdatfile((l:Wwatchist):char
+--
+--misc funcs
+--
++addWatchGroup(l:Wwatchlist,ngrp:char,pos:int)
++addWatchInstrument(l:Wwatchlist,name:char,..)
++rmWatchInstrument(l:Wwatchlist,name:char)
++bulkreplaceWyklbl(l:Wwatchlist,..)
++persist(l:Wwatchlist)
+--
+
+--
+--help funcs
+--
++whelp(l:Wwatchlist)
++ohelp(l:Wwatchlist)
++show(l:Wwatchlist)
+
+--
+bg=orange
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>432</x>
+      <y>112</y>
+      <w>56</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>24;32;48;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>488</x>
+      <y>632</y>
+      <w>272</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Wwatchlist&gt;&gt;
+Package::mtrlchart
+{WwatchlistCharting}
+--
+--
+--misc funcs
+--
++flipFctlbl(o:Wwatchlis,persist:bool)
++flipbg(o:Wwatchslist,persist:bool)
++ugpar(o:Wwatchslist,persist:bool)
++dngpar(o:Wwatchslist,persist:bool)
++inigpar(o:Wwatchslist,persist:bool)
+--
+--charting funcs
+--
++cc(o:Wwatchlist,tf:char,nof:bool,pl:bool,..)
++ccd(o:Wwatchlist,nof:bool,pl:bool,..)
++ccw(o:Wwatchlist,nof:bool,pl:bool,..)
++ccc(o:Wwatchlist,pl:bool,plf:bool,..)
++cci(o:Wwatchlist,n:int, wave:bool,..)
++ccv(o:Wwatchlist,tl:float,th:float,..)
+--
+--help funcs
+--
++crthelp(l:Wwatchlist)
+--
+
+--
+bg=orange
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>760</x>
+      <y>0</y>
+      <w>456</w>
+      <h>768</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Wwatchlist&gt;&gt;
+Package::mtrlchart
+{WwatchlistUserops}
+--
+--
+-market data related funcs
+--
++stfw1(o:Wwatchlist)
++stdw1(o:Wwatchlist)
++stfh1(o:Wwatchlist)
++gnd(o:Wwatchlist,f:bool,n:int,sav:bool)
++gndc(o:Wwatchlist,itrf:bool)
++gnw(o:Wwatchlist,itrf:bool)
++gndcs(o:Wwatchlist,itrf:bool,rollon:char,intrd:char,..)
++gndfcs(o:Wwatchlist,cslist:ContractSeqList,..)
++dmode(o:Wwatchlist,mode:char,startdate:char,enddate:char)
++dcdate(o:Wwatchlist, date:char)
+--
+-instrument related funcs
+--
++gif(o:Wwatchlist)
++gin(o:Wwatchlist,rechart:bool)
++gip(o:Wwatchlist)
++gis(o:Wwatchlist,instr:char)
++pd(o:Wwatchlist,tf:char,n:int,all:bool)
++pmeta(o:Wwatchlist,all:bool,n:int,ctime:char)
++pliquid(o:Wwatchlist,ctime:char,n:int,topdir:char)
++rmdTail(o:Wwatchlist,n:int,tf:char)
+--
+-story,report related funcs
+--
++ps(o:Wwatchlist,tf:char,lf:bool,n:int,uhist:bool,ct:bool,tex:bool,sig:bool)
++psc(o:Wwatchlist,lf:bool,nd:int,nw:int,uhist:bool)
++pst(o:Wwatchlist,uhist:bool)
+--
+-Wyckoff facts related funcs
+--
++iSelectfact(o:Wwatchlist)
++pWfct(o:Wwatchlist,slb:char,cand:bool,cbt:bool,cbb:boo,sav:bool)
++swLbl(o:Wwatchlist,slbl:char,dtime:char,sav:bool)
++uWfct(o:Wwatchlist,slbo:char,slbn:char,dtime:char,cand:bool,sav:bool)
++upWfct(o:Wwatchlist,slbn:char,cand:bool,sav:bool)
++pCfct(o:Wwatchlist,type:char,cont:char,dtime:char,cbt:bool,cbb:bool)
++pVfct(o:Wwatchlist,cont:char,dtime:char,cbt:bool,cbb:bool,sav:bool)
++pBfct(o:Wwatchlist,cont:char,dtime:char,cbt:bool,cbb:bool,sav:bool)
++pHfct(o:Wwatchlist,cont:char,dtime:char,cbt:bool,cbb:bool,sav:bool)
++pAfct(o:Wwatchlist,wc:char,cand:bool,bc:char,vc:char,hc:char,dtime:char,..)
++pNob(o:Wwatchlist,cont:char,dtime:char,cbt:bool,cbb:bool,sav:bool)
++apndFct(o:Wwatchlist, acont:char,type:char,dtime:char,sav:bool)
++pLvl(o:Wwatchlist,stopdate:char,sav:bool)
++pIcl(o:Wwatchlist,stopdate:char,sav:bool)
++pHfl(o:Wwatchlist,sav:bool)
++pTrl(o:Wwatchlist,sav:bool)
++pChn(o:Wwatchlist,sav:bool)
++pLepr(o:Wwatchlist,putl:bool,sav:bool)
++upHfl(o:Wwatchlist,sav:bool)
++rmFact(o:Wwatchlist,slbl:char,dtime:char, ctf:char,f:bool,sav:bool)
++rmpFact(o:Wwatchlist,sav:bool)
+--
+-trades related funcs
+--
++pptr(o:Wwatchlist,ftarg:float,pin:float,pstop:float,riskpt:float,capital:int,mult:1,..)
+
+--help funcs
+--
++wldhelp(l:Wwatchlist)
++wfhelp(l:Wwatchlist)
+
+bg=orange
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1240</x>
+      <y>32</y>
+      <w>496</w>
+      <h>424</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Wwatchlist&gt;&gt;
+Package::mtrlchart
+{Orderops}
+--
+--
+--trade analytics funcs
+--
++ck4tr(o:Wwatchlist,clb:bool,cbs:bool,arby:bool,pent:float,pstop:float,ft:float,mt:float,..)
++ptr(o:Wwatchlist,sdate:char,n:int,iall:bool,otn:bool,ct:bool)
++portf(o:Wwatchlist,sdate:char,tf:char)
++pctr(o:Wwatchlist)
++calcPortfolioNav(o:Wwatchlist,sdate:char,tf:char)
+--
+--trade market data processing funcs
+--
++cfotr(o:Wwatchlist, sav:bool)
++gnbfo(o:Wwatchlist,tf:char,single:bool,sav:bool)
++lpd(o:Wwatchlist,tf:char,dtype:char,gfirst:bool,wt:int,mwt:float,osunix:bool)
+--
+--order management funcs
+--
++rmatr(o:Wwatchlist,tid:int,sav:bool)
++cantr(o:Wwatchlist,tid:int,sav:bool)
++optr(o:Wwatchlist,cmnt:char,qty:int,mkto:bool,plstop:bool,verbose:bool,sav:bool)
++adjsoptr(o:Wwatchlist,tid:int,sav:bool)
++addOrder(o:Wwatchlist,kind:char,tid:int,qty:int,pr:float,sav:bool)
++rmotr(o:Wwatchlist,oid:int,sav:bool)
++canotr(o:Wwatchlist,oid:in,sav:bool)
++astoptr(o:Wwatchlist,tid:int,qty:int,pr:float,sav:bool)
++atartr(o:Wwatchlist,tid:int,qty:int,pr:float,sav:bool)
++aaaotr(o:Wwatchlist,tid:int,type:char,qty:int,pr:float,sav:bool)
++amotr(o:Wwatchlist,tid:int,qty:int,sav:bool)
++alotr(o:Wwatchlist,tid:int,qty:int,pr:float,sav:bool)
++moprtr(o:Wwatchlist,oid:int,pr:float,sav:bool)
++moqtytr(o:Wwatchlist,oid:int,qty:int,sav:bool)
++fixotr(o:Wwatchlist,oid:int,oncl:bool,sav:bool)
+--
+--help funcs
+--
++trhelp(l:Wwatchlist)
+bg=yellow
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1240</x>
+      <y>488</y>
+      <w>536</w>
+      <h>904</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Orderbook&gt;&gt;
+Package::mtrlchart
+{functional area object}
+--
+-pfpars:list
+-ometadat:data.frame
+-Tmptrade:Trade
+-oidcur:int
+-oidseed:int
+-tidcur:int
+-tidseed:int
+-odf:data.frame
+-tdf:data.frame
+--
+--constr
++initOrderbook(pparams:list,instrvec:vec,typevec:vec,...)
++initOrderbookcsv(pparams:list,csvfile:char)
+--
+--getters setters
+--
++getNextIdentity(o:Orderbook,ivar:char):int
++storeNextIdentity(o:Orderbook,ivar:char)
++getTemtrade(o:Orderbook):Trade
++{get/set}ActiveInstruments(o:Orderbook)
++{get/set}WatchInstruments(o:Orderbook)
+--
+--misc funcs
+--
++initPorfolioParams(accid:int,stratid:int,pname:char,..):list
++initOrderbookBlotter(o:Orderbook,tickers:vec)
++getInstrmetinfo(o:Orderbook,ticker:char,mtype:char)
++getTradesSubset(o:Orderbook, ticker:char, sdate:char,edate:char,crit:char)
++getOrdersSubset(o:Orderbook,ticker:char, sdate:char,edate:char,trcit:char,ocrit:char)
+
+--
+--Order operations
+--
++insOrderRec(o:Orderbook,order:Order)
++updOrderRec(o:Orderbook,order:Order)
++rmOrderRec(o:Orderbook,id:int)
++getOrderRec(o:Orderbook,id:int)
++getOrderFromRec(o:Orderbook,id:int)
++eraseOrder(o:Orderbook,oid:int)
+--
+--trade operations
+--
++insTradeRec(o:Orderbook,trade:Trade)
++updTradeRec(o:Orderbook,trade:Trade,cascade:bool)
++rmTradeRec(o:Orderbook,tid:int)
++getTradeRec(o:Orderbook,tid:int)
++getTradeFromRec(o:Orderbook,tid:int)
++eraseTrade(o:Orderbook,tid:int)
+--
+--biz functions
+--
++check4trade(o:Orderbook,instr:char,incdate:char,pent:float,pstop:float,ftarget:float,mtarget:float)
++openTrade(o:Orderbook,mtype:char,incdate:char,qty:int,entry:float,comment:char,plstop:bool)
++cancelTrade(o:Orderbook,tid:int,chgdate:char)
++updOrdersTradePosition(o:Orderbook,tid:int,chgdate:char,verbose:bool)
++addTradeOrder(o:Orderbook,tid:int,incdate:char,mtype:char,qty:int,price:float)
++updTradeOrder(o:Orderbook,oid:int, chgdate:char,param:char,value:float)
++procOrderFills(o:Orderbook,ticker:char,cdate:char,data:xts,verbose:bool)
++printTrades(o:Orderbook,ticker:char,sdate:char,edate:char,mmprice:float,n:int,..)
++printInstrGlpos(o:Orderbook,ticker:char,sdate:char,mmprice:float,edate:char)
++calcInstrumentPosition(o:Orderbook,ticker:char, sdate:char,edate:char)
++calcInstrumentPnl(o:Orderbook, ticker:char,mmprice:float,sdate:char,edate:char,ptype:char)
++calcPortfolioEquity(o:Orderbook,sdate:char,edate:char)
++calcPortfolioCash(o:Orderbook, sdate:char,edate:char)
++eqtyAlloc4instrument(o:Orderbook, ticker:char,sdate:char,edate:char)
++blotterPnl(o:Orderbook,ticker:char,xdata:xts,sdate:char,edate:char,init:bool,chart:bool)
+
+--
+--help funcs
+--
++crthelp(l:Wwatchlist)
+--
+bg=pink
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1808</x>
+      <y>1208</y>
+      <w>136</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Struct
+{order data frame}
+--
+id     : num 
+trid   : num 
+acc    : num 
+tkr    : char
+incdate: POSI
+type   : char
+status : char
+chgdate: POSI
+qty    : num 
+rprice : num 
+fprice : num </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1752</x>
+      <y>1144</y>
+      <w>80</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=n
+r1=odf
+</panel_attributes>
+    <additional_attributes>64;64;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>2040</x>
+      <y>928</y>
+      <w>136</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Struct
+{trade data frame}
+--
+ tid    : num
+ strat  : num
+ acc    : num
+ tkr    : char
+ incdate: POSI
+ status : char
+ tqty   : num
+ entry  : num
+ stop   : num
+ ftarget: num
+ mtarget: num
+ comment: chr</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1752</x>
+      <y>840</y>
+      <w>304</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=n
+r1=tdf
+</panel_attributes>
+    <additional_attributes>288;96;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1856</x>
+      <y>992</y>
+      <w>152</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Struct
+{book meta data frame}
+--
+IDNAM   : chr
+TYP     : chr
+CURR    : chr
+TKSIZ   : num
+TKVAL   : num
+UFEE    : num
+UINIMARG: num
+TKSLIPP : num
+RWGHT   : num</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1752</x>
+      <y>920</y>
+      <w>120</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=ometadata
+</panel_attributes>
+    <additional_attributes>104;72;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1808</x>
+      <y>32</y>
+      <w>344</w>
+      <h>800</h>
+    </coordinates>
+    <panel_attributes>Trade
+package:mMtrlchart
+--
+-tid:int
+-stratid:int
+-accid:int
+-itkr:char
+-inceptDate:POSI
+-tstatus:char
+-tqty:int
+-entry:float
+-stop:float
+-ftarget:float
+-mtarget:float
+-comment:char
+-torders :list
+--
+--constr
+--
++mkDummyTrade(ticker:char, incdate:POSI,entry:float,stop:float,ftarg:float,mtarg:float)
++mkTrade(strat:int,acc:int,tkr:char,incDate:POSI, qty:int, entry:float,stop:float,ftarg:float,mtarg:float)
++crTradeFromrec(tlist:list)
+--
+--getters setters
++{get/set}Tid(o:Trade,value:int)
++{get/set}Stratid(o:Trade,value:int)
++{get/set}Taccount(o:Trade,value:char)
++{get/set}Tticker(o:Trade,value:char)
++{get/set}Tstatus(o:Trade,value:char)
++{get/set}TincDate(o:Trade,value:POSI)
++{get/set}Tqty(o:Trade,value:int)
++{get/set}Entry(o:Trade,value:float)
++{get/set}Stop(o:Trade,value:float)
++{get/set}Ftarget(o:Trade,value:float)
++{get/set}Mtarget(o:Trade,value:float)
++{get/set}Comment(o:Trade,value:char)
++{get/set}Torders(o:Trade,value:list)
++{get/set}TradeOrder(o:Trade,value:Order)
++getOrdersattachedIds(o:Trade)
+
+--
+--operate methods
+--
++removeTradeOrder(o:Trade,order:Order)
++updTradeStatus(o:Trade)
++updOrdersizeOpenposition(o:Trade,chgdate:POSI)
++getFtargetRR(o:Trade)
++getMtargetRR(o:Trade)
++hasOrdersattached(o:Trade)
++getTradePosition(o:Trade)
++getTradeMtm(o:Trade,mmprice:float)
++getTradeMtmvalue(o:Trade, mmprice:float, contrmult:int)
++getTradeUpnl(o:Trade, mmprice:float, contrmult:int)
++getTradeRpnl(o:Trade, mmprice:float, contrmult:int)
++getTradeLockedCash(o:Trade, mmprice:float, marginpct:int)
++getTradeAvrgPrice(o:Trade, crit:char)
++isTradeProtected(o:Trade, crit:int)
++findTradeOrphanedOrders(o:Trade)
++strTradeOrphanedOrders(o:Trade)
++getTradeWorkingOrders(o:Trade)
++getTradeOrdersStatus(o:Trade)
++attachOrdersFromrecset(o:Trade, rset:data.frame)
++setOrdersTrid(o:Trade)
++initTradedataframe(o:Trade)
++toTraderecAslist(o:Trade)
++printTrade(o:Trade,mmprice:float, contrmult:int, co:bool)
+
+
++show()
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>2184</x>
+      <y>24</y>
+      <w>344</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>Order
+package:mMtrlchart
+--
+-id:int
+-trid:int
+-accid:int
+-itkr:char
+-inceptDate:POSI
+-type:char 
+-status:char
+-changeDate:POSI
+-qty:int
+-rprice:float
+-fprice:float
+--
+--constr
+--
++mkLimitOrder(tradeid:int,acc:int,tkr:char,incDate:POSI,qty:int,price:float)
++mMarketOrder(tradeid:int,acc:int,tkr:char,incDate:POSI,qty:int,price:float,slippg:float)
++crOrderFromrec(olist:list)
+--
+--getters setters
++{get/set}Id(o:Order,value:int)
++{get/set}Trid(o:Order,value:int)
++{get/set}Type(o:Order,value:char)
++{get/set}Status(o:Order,value:char)
++getTicker(o:Order)
++getOaccount(o:Order)
++getIncDate(o:Order,chr:bool)
++{get/set}ChgDate(o:Order,value:POSI)
++{get/set}Qty(o:Order,value:int)
++{get/set}Regprice(o:Order,value:float)
++{get/set}Fillprice(o:Order,value:float)
++getMtm(o:Order,mmprice:float)
++getNotional(o:Order)
+--
+--operate methods
+--
++cancelOrder(o:Order,chdate:POSI)
++fillOrder(o:Order,chdate:POSI,fillprice:float)
++checkFillOrder(o:Order, data:xts,cdate:POSI,slippage:float)
++initOrderdataframe(o:Order):data.frame
++show()
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1744</x>
+      <y>272</y>
+      <w>80</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=Tmptrade</panel_attributes>
+    <additional_attributes>32;216;64;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2112</x>
+      <y>368</y>
+      <w>88</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+r1=list of {Order}</panel_attributes>
+    <additional_attributes>40;280;72;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1056</x>
+      <y>472</y>
+      <w>136</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Struct
+{order data frame}
+--
+id     : num 
+trid   : num 
+acc    : num 
+tkr    : char
+incdate: POSI
+type   : char
+status : char
+chgdate: POSI
+qty    : num 
+rprice : num 
+fprice : num </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1072</x>
+      <y>864</y>
+      <w>144</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Struct
+{pfpars list}
+--
+account  : num 
+straregy	: num 
+name    	: char 
+iniDate  : char
+iniEquity: num
+riskpct  : num
+activeinst : char
+watchinst : char </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1192</x>
+      <y>480</y>
+      <w>64</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>60.0;10.0;10.0;480.0</additional_attributes>
+  </element>
+</diagram>

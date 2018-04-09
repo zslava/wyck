@@ -1,0 +1,51 @@
+%
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}   % set up margins
+\usepackage{enumerate}              % fancy enumerate
+\usepackage{amsmath}                % used for \eqref{} in this document
+\usepackage{verbatim}               % useful for \begin{comment} and \end{comment}
+\usepackage{comment}
+\usepackage{tabularx}
+
+
+\begin{document}
+
+
+<<setup, echo = FALSE,  message = FALSE>>=
+options(width = 80)
+opts_chunk$set(  fig.show='hold', cache=FALSE,par=TRUE)
+
+
+mldl <- .Object@mdata
+iname<-getCinstrument(mldl)
+ilabel <- getInstrumentLabel(mldl,iname)
+dd <- getCdatedata(.Object@mdata, iname,'d1')
+lstdate <- strftime( index(last(dd)), format="%Y-%m-%d" )
+@
+
+\subsection*{Instrument \Sexpr{iname} (\Sexpr{ilabel}),    last data \Sexpr{lstdate}}
+
+\subsection*{Daily analysis}
+%%\advance\leftskip-1cm
+\includegraphics[width=1\linewidth]{\Sexpr{iname}_d1}
+%%\advance\leftskip+1cm
+
+%%\textsl{Instrument: \Sexpr{iname} timeframe: daily}
+<<storyd1, eval=TRUE, echo=FALSE,results='asis'>>=
+ps(.Object,tf='d1',n=10,lf=T,ct=F,tex=T)
+@
+
+\clearpage
+
+\subsection*{Weekly analysis}
+%%\advance\leftskip-1cm
+\includegraphics[width=1\linewidth]{\Sexpr{iname}_w1}
+%%\advance\leftskip+1cm
+
+%%\textsl{Instrument: \Sexpr{iname} timeframe: weekly}
+<<storyw1, eval=TRUE, echo=FALSE,results='asis'>>=
+ps(.Object,tf='w1',n=60,lf=T,ct=F,tex=T)
+@
+
+
+\end{document}

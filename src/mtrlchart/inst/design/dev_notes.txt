@@ -1,0 +1,8 @@
+developer notes. 
+
+
+###### market data #######
+market data should be saved in a separate rdat as opposed to wwatchlist data  <= OK
+
+daily data should be treated as from UTC   tz  <= OK 
+intraday data should be treated from specific tz

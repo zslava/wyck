@@ -1,0 +1,233 @@
+%\VignetteIndexEntry{mtrlchart: market analytics using Wyckoff methodology}
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage[page]{appendix}
+\hypersetup{colorlinks,%
+            citecolor=black,%
+            linkcolor=blue,%
+            urlcolor=blue,%
+            }
+
+\title{\bf mtrlchart: Market analytics with Wyckoff meethodology }
+\author{Sviatoslav Zimine}
+\date{May 27, 2015}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+The package {\tt mtrlchart} was created to perform analysis on market time-series based on combinations of price and volume action and following a methodology originally developed by {\sl Richard Wyckoff}~\cite{richardwyckoff} in the beginning of the 20th century. The training based on original methodology is provided by the Wyckoff Stock Market Institute~\cite{wyckoffinst}.
+
+A cousin package {\tt pmktdata} was developed to support dowloading of market data frm {\sl Yahoo} and {\sl DTN} providers.
+
+A user loads from an {\sl .rdat} file and manipulates a {\tt Wwatchlist} object which contains a list of instruments with downloaded market data. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Working with an instrument watchlist}
+
+\subsection{Loading a watchlist}
+A user first loads  a watchlist previously  prepared and stored in {\sl .rdat} file in a directory on a file system (note: in my Rsession loading the mtrchart package and its dependencies requires just {\sl require(mtrlchart)})
+
+<<l,echo=FALSE>>=
+require(Defaults, lib.loc='~/R/library')
+require(TTR, lib.loc='~/R/library')
+require(quantmod, lib.loc='~/R/library')
+require(iqfeed, lib.loc='~/R/library')
+require(logging, lib.loc='~/R/library')
+
+require(FinancialInstrument, lib.loc='~/R/library')
+require(PerformanceAnalytics, lib.loc='~/R/library')
+require(blotter, lib.loc='~/R/library')
+require(pmktdata, lib.loc='~/R/library')
+@
+<<l2>>=
+##loading this package
+require(mtrlchart, lib.loc='~/R/library')
+## loading  the watchlist rdat file
+wl <- lwl('~/googledrive/cdat/wls/geaa_rnw.rdat')
+@
+The package contains a number of helper functions grouped by subjects.
+
+<<hlp>>=
+ohelp(wl)
+@
+To see the contents of the loaded instruments in a watchlist and their respective downloaded market data print the object:
+
+<<pri, results=hide>>=
+wl
+@
+\subsubsection{Switching between two modes}
+a {\tt Wwatchlist} object supports two modes. A {\sl live} mode is suitable for up to date data downloads and curent daily analysis. A {\sl historic} mode is useful for data analysis and walk-through in the past for training purposes.
+
+<<modes>>=
+##switch to live mode
+dmode(wl, mode='live', startdate='1980-01-01', enddate=Sys.date())
+##print current instrument last data
+pd(wl,n=1)
+##switch to historic mode
+dmode(wl, mode='historic', startdate='1980-01-01', enddate=Sys.Date() )
+##go to specific date in the past
+dcdate(wl,date='1985-01-01')
+pd(wl)
+@
+
+\subsubsection{Navigating market data}
+Forwarding market data applies mostly to the {\sl historic mode}. After setting a current date with {\tt dcdate(wl)}, use {\tt gnd(wl)}, {\tt gnw(wl)} to advance by 1 day, 1 week.
+<<gnd>>=
+gnd(wl)
+pd(wl,n=1)
+@
+Use {\tt gni(wl),gif(wl), gis(wl,instr)} to switch a current instrument to next, first or a specific instrument in the watchlist.
+
+\subsection{configure a watchlist}
+An instrument watch list has a csv configuration file \texttt{ge\_aa\_ref.csv}. Further to an instrument type, this configuration contains a classification for the equity stocks grouping.
+<<wlconf, echo=FALSE>>=
+wlcfg <- "~/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/ge_aa_ref.csv"
+read.csv(wlcfg)
+@
+This configuration is used to create a list of instrument and download  the corresponding market data
+using a function {\tt instrlistdatacsv()}. Full sequence of commands  is in a script \texttt{mk\_geaa\_ref.R} presented in the appendix.
+
+\section{Working with labels and levels}
+A list of Wyckoff labels is available from {\tt whelp(wl)} \cite{wyckoffinst}. Refer to appendix
+
+\subsection{Charting}
+\SweaveOpts{height=8,width=15}
+\begin{center}
+Refer to {\tt crthelp(wl)} function to list charting functions. To chart current instrument on a daily frame use {\tt ccd()}, for weekly timeframe {\tt ccw()}.
+<<ccd, fig=TRUE>>=
+ccd(wl)
+@
+\end{center}
+
+% To chart instruments defined as your active portoflio
+% \SweaveOpts{height=12,width=12}
+% \begin{center}
+% <<ccm, fig=TRUE>>=
+% ccm(wl)
+% @
+% \end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Trading simulator}
+\subsection{Configure the active portfolio}
+First, edit a tradebook configuration csv file. Specify instrument ticket, currency, tick size, tick dollar value, tick unit brokerage fee in dollars, initial margin pert contract in dollars, slippage in ticks, relative weight of a security in a portfolio (1,1,1 are  three equally weighted securities).
+In our example it is called \texttt{geaa\_tradebook\_cfg\_ref.csv}.
+<<trcfg,echo=FALSE>>=
+cfgtradefname <- '~/Dropbox/cs/osx/osxwr/mtrlchart-batch/order/geaa_tradebook_cfg_ref.csv'
+read.csv(cfgtradefname)
+@
+Full list of commands below is saved in a script \texttt{add\_geaa\_tradebook.R} presented in the appendix.
+\subsubsection{Common operations}
+A first operation usually involves checking an attractiveness of a potential trade for risk/reward ratio. Check it using {\tt tdck(wl,ft=100.00, mt=110.00)}. This function requires to have a chart with an instrument used to specify interactively an entry price level and stop level. {\tt ft, mt} are parameters for first target and main target of a potential trade.
+<<echo=FALSE>>=
+ccd(wl)
+@
+<<tck,eval=TRUE,results=hide>>=
+tdck(wl,pent=2.41, pstop=2.31, ft=2.45, mt=2.90)
+@
+<<echo=FALSE,results=hide>>=
+dev.off()
+@
+The results of this check are stored in a temporary trade which one can print with {\tt tdpt()}.
+<<>>=
+tdpt(wl) ## print details of the potential trade, ftrr, mtrr are risk reward ratios
+@
+To place an order for a current instrument (market, or limit) use 
+<<plo,eval=TRUE>>=
+tdpl(wl,qty=1000,mkto=FALSE,plstop=TRUE)
+@
+with order size suggested by {\tt tdck()} determined by the risk per trade {\sl risktradepct} parameter
+from the order book configuration.\ref{trap} 
+To check if a placed order is filled on next bar use {\tt gnd(wl); cfill(wl)} or  an equivalent {\tt gnf(wl)}.
+<<cf,eval=TRUE>>=
+gnf(wl)
+@
+To print the current trades list use
+<<tp,eval=TRUE>>=
+tdp(wl)
+@
+you can cancel the trade if it has no exposure and only working limit orders
+<<trca,eval=TRUE>>=
+tdca(wl,tid=1) # tid is a numeric id for each trade
+@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{appendices}
+
+\section{Working with an instrument watchlist}
+Contents of the script \texttt{mk\_geaa\_ref.R} to create a watchlist from scratch
+<<wlmk,eval=FALSE>>=
+library(quantmod)
+library(mtrlchart)
+grpsorted <- c("ix", "energy","metals","consumer" ,"financial"
+                      ,"healthcare", "industrial", "materials"
+                      , "technology", "utilities")
+
+sdt <- "1980-01-01"
+edt <- "2015-10-02"
+csvfile <- "~/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/ge_aa_ref.csv"
+#create and download market data for the list from the csvfile
+mktd <- instrlistdatacsv(csvfile, grpsorted,  mode='live'
+                        ,startdate=sdt,enddate=edt
+                        , dsrc='yahoo', dld=T)
+
+#Create Watchlist object
+wl <- wwlistfromdata(mktd)
+
+setRdatfile(wl) <- '~/googledrive/cdat/wls/geaa-ref.rdat'
+#persistence
+persistMdata(wl)
+persist(wl,withmarketdata=FALSE,verbose=TRUE)
+@
+
+\section{Trading Simulator}
+\label{trap}
+Contents of the script \texttt{add\_geaa\_tradebook.R}
+
+<<eval=FALSE>>=
+#orderbook config file
+cfgtradefname <- '~/Dropbox/cs/osx/osxwr/mtrlchart-batch/order/geaa_tradebook_cfg_ref.csv'
+#values metadata
+portf <- "eqportf"
+startcapital <- 100000  # initial trading capital nav
+iniDate <- "1990-01-01"  #earliest trading date
+risktr <- 0.01  # risk per trade as a percent of total NAV
+acc <- 10
+strat <- 1    
+activeinstrs <- c("AA","GE") # set traded  instruments
+ppars <- initPorfolioParams(accid=acc, stratid=strat, pname=portf, iniDate=iniDate
+                                ,iniEquity=startcapital, risktradepct=risktr
+                                ,actinstrs=activeinstrs )
+ob <- initOrderbookcsv(ppars,cfgtradefname)
+setWatchInstruments(ob)<-c("AA","GE")
+wl@orderbook <- ob
+persist(wl,withmarketdata=FALSE,verbose=TRUE)
+@
+
+\section{Working with labels and levels}
+The list of Wyckoff facts \cite{wyckoffinst}
+<<wyck>>=
+whelp(wl)
+@
+
+\end{appendices}
+
+\begin{thebibliography}{99}
+
+\bibitem{wyckoffinst} Wyckoff stock market institute:
+ http://wyckoffstockmarketinstitute.com
+
+\bibitem{richardwyckoff} Richard Wyckoff:
+ URL http://en.wikipedia.org/wiki/Richard\_Wyckoff
+
+
+\end{thebibliography}
+\end{document}

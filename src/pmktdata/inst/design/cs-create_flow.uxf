@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+// fontsize=14
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Cmd to select multiple elements
+// Use Cmd+mouse to select via lasso
+//
+// Use +/- or Cmd+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Cmd+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+// This text will be stored with each diagram;  use it fo
+title:DTN Contracts update
+
+Start
+
+If
+	[just EOD\old style]
+	cs &lt;- readcs(iname)
+
+	[EOD + Intraday]
+	cs &lt;- nreadcs(iname,freq=60,intrd="now")
+EndIf
+Should new future\contracts be added?
+
+
+r notes.</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.ActivityDiagramText</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>931</w>
+      <h>857</h>
+    </coordinates>
+    <panel_attributes>title:DTN Contracts sequence create
+
+Start
+[properties file with\instr name\dstore dir,contract months,\intrday frequencies,\day session start stop, tick details\ ex in ../ziminegoogledrive/mkdata/dtn/tcontrseq/]
+prepare instrument config file
+[create sequence skeleton]
+cs &lt;-  csfromcfg(fname=iname.cfg,cfgdir=cdir)
+[initial download of EOD data]
+iniDownload(cs, lstqtime=Sys.time(), persist=F,findvrol=F)
+updateDataExpiries(cs)
+findRollonvol(cs,mstore=F)
+findRollonvol(cs,mstore=T)
+persistSeq(cs)
+[initial download of intraday data]
+iniDownloadIntra(cs,interval=60,startContract='xxxx-01-01',perist=F)
+persistIntra(cs,60)
+[full example in \ /Users/zimine/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/mk_high-yield-etfs.R ]
+End
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

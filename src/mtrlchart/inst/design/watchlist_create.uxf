@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.ActivityDiagramText</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1196</w>
+      <h>937</h>
+    </coordinates>
+    <panel_attributes>title:Wwatchlist Create
+Start
+If
+	[intraday DTN futures]
+	refer to diag cs-creat_flow
+
+	[daily yahoo equities]
+	[csv fmt data with fields:\instr,ticker,type,label,group\ex in \ /Users/zimine/Dropbox/cs/osx/osxwr/mtrlchart-batch/wyck-cre/high-yield-etfs.csv ]
+	prepare instruments list config file
+	[create an array of instrument groups,\specify data start date, stop date]
+	specify data params
+	[make Market data object \ from earlier created config file]
+	mktd &lt;- instrlistdatacsv(csvfile, grpsorted,  mode='live,\startdate=sdt,enddate=ed,\dsrc='yahoo', dld=T)
+	[make Wwatchlist objects from  the market data object]
+	wl &lt;- wwlistfromdata(mktd)
+	[specify the wwatchlist rdat file]
+	setRdatfile(wl) &lt;- '/Users/zimine/googledrive/cdat/wls/highyield.rdat';\persist(wl)	
+EndIf
+[full example\ /Users/zimine/Dropbox/cs/osx/osxwr/mtrlchart-batch/mkt_cs.R]
+
+End
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
