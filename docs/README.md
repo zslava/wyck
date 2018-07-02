@@ -4,4 +4,7 @@ wyckoff_proj-class_diagram.pdf is   a class diagram for p packages pmktdata (dow
 
 mtrlchart-vignette.pdf  is a R package help for mtrlchart. 
 
+WyckoffSchematicsMarketTiming.pdf   an article with a resume of Wyckoff methodology
+
+
 cs-download_flow.pdf  , wyckoff_analyse.pdf , trade-analyse.pdf are helpers to operate the project's functionalities in: downloading market data,  do chart analysis, operate a trading portfolio simulator.
